@@ -20,7 +20,7 @@
 		Dell E-Latitude e6420 i7-2760  4 GB
 		(8 cores)
 
-		Bit refers to the bitwise implementation
+	Bit refers to the bitwise implementation
 
 		N-queens:   solutions
 
@@ -34,8 +34,8 @@
 
 		9-queens solutions:   352
 		MBP:            7.663 ms
-		Spawn4:    	  134.436 ms
-		Spawn8:    	  106.414 ms
+		Spawn4:       134.436 ms
+		Spawn8:       106.414 ms
 		Bit.MBP:        0.551 ms
 		BitSpawn4:    115.394 ms
 		BitSpawn8:     92.169 ms
@@ -67,7 +67,7 @@
 		13-queens solutions:   73,712
 		MBP:         2081.265 ms
 		Spawn4:      1254.277 ms
-		Spawn8:    	  629.195 ms
+		Spawn8:       629.195 ms
 		Bit.MBP:      49.454  ms
 		BitSpawn4:    136.035 ms
 		BitSpawn8:    102.640 ms
@@ -75,7 +75,7 @@
 		14-queens solutions:   365,596
 		MBP:        12506.979 ms
 		Spawn4:      5795.678 ms
-		Spawn8:   	 3863.195 ms
+		Spawn8:      3863.195 ms
 		Bit.MBP:      252.998 ms
 		BitSpawn4:    223.647 ms
 		BitSpawn8:    149.845 ms
@@ -100,7 +100,7 @@
 		MBP:
 		Spawn4:
 		Spawn8:    2137056.583 ms
-		Bit.MBP:   	 73997.320 ms
+		Bit.MBP:     73997.320 ms
 		BitSpawn4:   32881.523 ms
 		BitSpawn8:   18709.070 ms
 
@@ -131,5 +131,5 @@
 
 
 	References:  "Backtracking Algorithms in MCPL using Bit Patterns and Recursion" - Martin Richards 
-	"Bitwise solution to N-Queens in Javascript". www.gregtrowbridge.com/a-bitwise-solution-to-the-n-queens-problem-in-javascript/
+	"Bitwise solution to N-Queens.." gregtrowbridge.com/a-bitwise-solution-to-the-n-queens-problem-in-javascript/
 
