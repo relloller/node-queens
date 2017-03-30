@@ -6,7 +6,7 @@ github.com/relloller/node-queens
     nodeQueens.js
     
 	From terminal:
-		node nodeQueens.js '#ofQueens'
+		node nodeQueens.js '# o fQueens'
 		'#ofQueens' must be integer
 */
 
@@ -20,9 +20,9 @@ else throw new TypeError(process.argv[2] + ' must be an integer');
 function nQueensSymmetry(n){
     var middlePos=Math.floor(n/2);
     var sols = 0;
-	for (var i = 0; i < middlePos; i++) sols+=nQueens(n,[[0,i]])*2;
-	if (n%2===1) sols+=nQueens(n,[[0,middlePos]]);
-	return sols;
+    for (var i = 0; i < middlePos; i++) sols+=nQueens(n,[[0,i]])*2;
+    if (n%2===1) sols+=nQueens(n,[[0,middlePos]]);
+    return sols;
 }
 
 function nQueens(boardsize, arr = []) {
