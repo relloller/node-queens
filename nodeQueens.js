@@ -3,11 +3,11 @@ github.com/relloller/node-queens
 	Victor Shaw
 	vshaw168@gmail.com
 	3/24/17
-    nodeQueens.js
+    	nodeQueens.js
     
 	From terminal:
-		node nodeQueens.js '# o fQueens'
-		'#ofQueens' must be integer
+	node nodeQueens.js '# of queens'
+	'# of queens' must be integer
 */
 
 'use strict';
@@ -53,4 +53,3 @@ console.time('nq');
 var nodeQueensSolutions = nQueensSymmetry(numq);
 console.timeEnd('nq')
 console.log(numq+'-nqueens','solutions:',nodeQueensSolutions);
-
