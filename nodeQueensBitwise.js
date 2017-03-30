@@ -1,13 +1,13 @@
 /*
-github.com/relloller/node-queens
+    https://github.com/relloller/node-queens
     Victor Shaw
     vshaw168@gmail.com
     3/24/17
     nodeQueensBitwise.js
 
     From terminal:
-        node nodeQueensBitwise.js queenNumber
-        *queenNumber argument must be an integer
+    node nodeQueensBitwise.js '# of queens'
+    '# of queens' argument must be an integer
 
 References: "Backtracking Algorithms in MCPL using Bit Patterns and Recursion" - Martin Richards 
             "Bitwise solution to N-Queens in Javascript". www.gregtrowbridge.com - Greg Trowbridge
