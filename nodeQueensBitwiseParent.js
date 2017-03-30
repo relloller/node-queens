@@ -6,44 +6,45 @@
     nodeQueensBitwiseParent.js
 
     From terminal:
-        node nodeQueensBitwiseParent.js queenNumber
-        *queenNumber must be integer
+        node nodeQueensBitwiseParent.js '#ofQueens'
+        '#ofQueens' must be integer
 
 
 References: "Backtracking Algorithms in MCPL using Bit Patterns and Recursion" - Martin Richards 
             "Bitwise solution to N-Queens in Javascript". www.gregtrowbridge.com - Greg Trowbridge
 
 */
-
-console.time('nQ');
+'use strict';
 
 var spawn = require('child_process').spawn;
 var spawnEvents = new(require('events')).EventEmitter();
 var cpus = require('os').cpus().length;
+
+var numq = 13; //default 13-queens without provided argument
+if (process.argv[2] && !Object.is(parseInt(process.argv[2]), NaN)) numq = parseInt(process.argv[2]);
+else if (!process.argv[2]) console.log('without parameter, default n is ' + numq + '-queens');
+else throw new TypeError(process.argv[2] + ' must be an integer');
+var posy = 0;
+var solutions = (new Array(Math.ceil(numq / 2))).fill(null);
 var childList = [];
 
-var num = 10;
-if(process.argv[2] && !Object.is(parseInt(process.argv[2],NaN))) num = parseInt(process.argv[2]);
-else new TypeError('Requires integer');
-var posy = 0;
-var solutions = (new Array(Math.ceil(num / 2))).fill(null);
-
 spawnEvents.on('done', () => {
-    var solutions_total = solutions.reduce((a,b)=>{return a+b});
-    console.log(num + '-queens solutions:', solutions_total);
+    var solutions_total = solutions.reduce((a, b) => {return a + b});
+    console.log(numq + '-queens solutions:', solutions_total);
     console.timeEnd('nQ');
+    return solutions_total;
 });
 
 function spawnFnc() {
-    var child = spawn('node', ['nodeQueensBitwiseChild.js', num, posy]);
-    childList.push(child.pid); 
+    var child = spawn('node', ['nodeQueensBitwiseChild.js', numq, posy]);
+    childList.push(child.pid);
     child.posy = posy;
-
+    // console.log('child', childList.length, 'child.pid', child.pid);
     child.stdout.on('data', (data) => {
         solutions[child.posy] = JSON.parse(data);
-        console.log('solutions', solutions);
-        if (posy + 1 >= Math.ceil(num / 2)) {
-            child.kill(); //what violent syntax
+        // console.log('solutions', solutions);
+        if (posy + 1 >= Math.ceil(numq / 2)) {
+            child.kill(); //i do not condone violent syntax
         } else {
             child.posy = ++posy;
             child.stdin.write(JSON.stringify(posy));
@@ -57,15 +58,17 @@ function spawnFnc() {
     child.on('close', (code) => {
         console.log('child process ' + child.pid + ' exited with code ' + `${code}`);
         childList.splice(childList.indexOf(child.pid), 1);
-        if(childList.length<1 && solutions.every((e)=>{return e!==null})) spawnEvents.emit('done');
+        if (childList.length < 1 && solutions.every((e) => {return e !== null})) spawnEvents.emit('done');
     })
 }
 
-spawnFnc();
-cpus*=2
-if (num > 13) {
-    for (var i = 0; i < cpus; i++) {
-        posy += 1;
-        spawnFnc();
-    }
+function spawnLimiter() {
+    var spawnLimit = cpus;
+    if (cpus > Math.ceil(numq / 2)) spawnLimit = Math.ceil(numq / 2);
+    spawnFnc();
+    for (var i = 0; i < spawnLimit-1; i++) spawnFnc(posy++);
 }
+
+
+console.time('nQ');
+spawnLimiter();

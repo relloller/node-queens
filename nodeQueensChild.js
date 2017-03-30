@@ -32,26 +32,23 @@ function nodeQueensChild() {
 }
 
 function nQueens(boardsize, arr = []) {
-    var solutions=[];
+    var solutions=0;
     function nQueensRec(boardsize, arr) {
         var arrL = arr.length;
-        if (arrL === boardsize) solutions.push(arr);
+        if (arrL === boardsize) solutions++;
         else for(var q = 0; q < boardsize; q++) {
             if(checkSpaceEach(arr, [arrL, q])) nQueensRec(boardsize, arr.concat([[arrL, q]]));
         }
     }
     nQueensRec(boardsize, arr);
-    // return solutions;    //uncomment to return the placement solutions arrays and comment out line below
-    return solutions.length;
+    return solutions;
 }
 
-function checkRow(a, b) { return (a[0] !== b[0])}  //checkRow is not needed in this recursive implementation
+function checkRow(a, b) { return (a[0] !== b[0])}  //checkRow is not needed in this recursive implementation and has been removed from functions
 function checkColumn(a, b) {  return (a[1] !== b[1])}
 function checkDiagonal(a, b) { return (Math.abs(a[0] - b[0]) !== Math.abs(a[1] - b[1]))}
-function checkSpace(a, b) {return (checkRow(a, b) && checkColumn(a, b) && checkDiagonal(a, b))}
+function checkSpace(a, b) {return (checkColumn(a, b) && checkDiagonal(a, b))}
 function checkSpaceEach(arr, pos) {
-    for (var i = 0; i < arr.length; i++) {
-        if ((checkColumn(arr[i], pos) && checkDiagonal(arr[i], pos)) === false) return false;
-    }
+    for (var i = 0; i < arr.length; i++) if(!checkSpace(arr[i],pos)) return false;
     return true;
 }

@@ -9,24 +9,26 @@ github.com/relloller/node-queens
         node nodeQueensBitwise.js queenNumber
         *queenNumber argument must be an integer
 
-    Added ability to select the position of the first queen in row 0 as represented by posy.
-
 References: "Backtracking Algorithms in MCPL using Bit Patterns and Recursion" - Martin Richards 
             "Bitwise solution to N-Queens in Javascript". www.gregtrowbridge.com - Greg Trowbridge
 */
+'use strict';
 
-var num = 10;
-if(process.argv[2] && !Object.is(parseInt(process.argv[2],NaN))) num = parseInt(process.argv[2]);
-else new TypeError('Requires integer');
-var posy = null;
-if(process.argv[3] && !Object.is(parseInt(process.argv[3],NaN))) posy = parseInt(process.argv[3]);
-else new TypeError('Requires integer');
+var numq = 13; //default 13-queens without argument
+if (process.argv[2] && !Object.is(parseInt(process.argv[2]), NaN)) numq = parseInt(process.argv[2]);
+else if (!process.argv[2]) console.log('without parameter, default n is ' + numq + '-queens');
+else throw new TypeError(process.argv[2] + ' must be an integer');
 
-console.time('nq');
-console.log(num+'-nqueens','solutions:',nQueensBitwise(num,posy));
-console.timeEnd('nq');
+//takes into account board symmetry
+function nQueensSymmetry(n){
+    var middlePos=Math.floor(n/2);
+    var sols = 0;
+    for (var i = 0; i < middlePos; i++) sols+=nQueensBitwise(n, i)*2;
+    if (n%2===1) sols+=nQueensBitwise(n, middlePos);
+    return sols;
+}
 
-function nQueensBitwise(n, posy) {
+function nQueensBitwise(n, pos) {
     var count = 0;
     var done = (1 << n) - 1;
     function nQRec(ld, col, rd) {
@@ -38,11 +40,14 @@ function nQueensBitwise(n, posy) {
             nQRec((ld | bit) >> 1, col | bit, (rd | bit) << 1);
         }
     };
-    if(posy !== null) {
-        var startY = Math.pow(2, posy);
-        nQRec(startY >> 1, startY, startY << 1);
-    } else { nQRec(0,0,0); }
+    var startY = Math.pow(2, pos);
+    nQRec(startY >> 1, startY, startY << 1);
     return count;
 };
  
+
+console.time('nq');
+var nQueensResult = nQueensSymmetry(numq);
+console.timeEnd('nq');
+console.log(numq+'-nqueens','solutions:',nQueensResult);
 
