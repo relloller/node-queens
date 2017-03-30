@@ -34,13 +34,13 @@ Performance Data:
 		8-queens  solutions: 92
 		NBW:           4 ms
 		NBW-4:       128 ms
-		BIT:          >1 ms
+		BIT:          <1 ms
 		BIT-4:       124 ms
 
 		9-queens  solutions: 352
 		NBW:           7 ms
 		NBW-4:       128 ms
-		BIT:           1 ms
+		BIT:          <1 ms
 		BIT-4:       126 ms
 
 		10-queens solutions: 724
@@ -86,20 +86,20 @@ Performance Data:
 		BIT-4:      3898 ms
 
 		17-queens solutions: 95,815,104
-		NBW:		 TBD
+		NBW:	         TBD
 		NBW-4:		 TBD
 		BIT:       74162 ms
 		BIT-4:     28040 ms
 
 		18-queens solutions: 666,090,624
 		NBW:		 TBD
-		NBW-4:       TBD
+		NBW-4:           TBD
 		BIT:      499455 ms
 		BIT-4:    194882 ms
 
 		19-queens solutions: 4,968,057,848
 		NBW:		 TBD
-		NBW-4:       TBD
+		NBW-4:           TBD
 		BIT:		 TBD
 		BIT-4:   2234459 ms
 
