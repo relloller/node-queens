@@ -1,26 +1,28 @@
 
-node-queens
- 
- This repo approaches the infamous N-Queens puzzle through the use of concurrent node.js instances.
+# node-queens
+This repo approaches the infamous N-Queens puzzle through the use of concurrent node.js instances.
+
+1. Recursive backtracking algorithm(non-bitwise)
+
+       node nodeQueens.js '# of queens'
+           
+1. Spawns concurrent node.js instances to run above algorithm
+
+       node nodeQueensParent.js '# of queens'
+           
+1. Recursive bitwise algorithm(based on MCPL algorithm by Martin Richards)
+
+       node nodeQueensBitwise.js '# of queens'
+
+1. Spawns concurrent node.js instances to run above bitwise algorithm - modified to accept an argument for placement of starting queen 
+
+       node nodeQueensBitwiseParent.js '# of queens'
+
+## Algorithm Optimizations
+* Symmetry of solutions - Only half of the columns need to be solved. The other half can be inferred by mirroring found solutions. For odd numbered board sizes, the middle column will be solved as well.
+* Variable queen placements - Creating a function parameter for variable queen placements enables the problem to be broken down and solved by parallel processes
   
-  1. recursive backtracking algorithm(non-bitwise)
-
-  		node nodeQueens.js '# of queens'
-
-  2. spawns concurrent node.js instances to run above algorithm
-
-  		node nodeQueensParent.js '# of queens'
-
-  3. recursive bitwise algorithm(based on MCPL algorithm by Martin Richards)
-
-  		node nodeQueensBitwise.js '# of queens'
-
-  4. spawns concurrent node.js instances to run above bitwise algorithm - modified to accept an argument for placement of starting queen 
-
-  		node nodeQueensBitwiseParent.js '# of queens'
-
-  
-Performance Data:  
+## Performance Data:  
 	
 	MacBook Pro Ret 2015 2.7 GHz Intel Core i5 8 GB  (4 cores)
  	
@@ -105,6 +107,8 @@ Performance Data:
 
 
 
-	References:  "Backtracking Algorithms in MCPL using Bit Patterns and Recursion" - Martin Richards 
-	"Bitwise solution to N-Queens.." gregtrowbridge.com/a-bitwise-solution-to-the-n-queens-problem-in-javascript/
+References:  
+"Backtracking Algorithms in MCPL using Bit Patterns and Recursion" - Martin Richards
+
+[A bitwise solution to the n-queens problem in Javascript - www.gregtrowbridge.com](http://www.gregtrowbridge.com/a-bitwise-solution-to-the-n-queens-problem-in-javascript/)
 
