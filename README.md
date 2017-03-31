@@ -108,7 +108,7 @@ This repo approaches the infamous N-Queens puzzle through the use of concurrent 
 
 
 References:  
-"Backtracking Algorithms in MCPL using Bit Patterns and Recursion" - Martin Richards
+["Backtracking Algorithms in MCPL using Bit Patterns and Recursion" - Martin Richards](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.51.7113&rep=rep1&type=pdf)
 
 [A bitwise solution to the n-queens problem in Javascript - www.gregtrowbridge.com](http://www.gregtrowbridge.com/a-bitwise-solution-to-the-n-queens-problem-in-javascript/)
 
