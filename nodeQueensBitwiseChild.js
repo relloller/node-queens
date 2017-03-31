@@ -24,8 +24,7 @@ resQF();
 
 function resQF() {
     var resQ = nQueensBitwise(nQ_num, nQ_pos);
-    if (nQ_num % 2 === 1 && Math.floor(nQ_num / 2) === nQ_pos) true
-    else resQ *= 2; // for rows with symmetry, we multiple solutions by 2
+    if (nQ_num % 2 === 0 || Math.floor(nQ_num / 2) !== nQ_pos) resQ *= 2; // for rows with symmetry, we multiple solutions by 2
     process.stdout.write(JSON.stringify(resQ));
 }
 

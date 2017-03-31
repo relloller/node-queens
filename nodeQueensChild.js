@@ -27,7 +27,7 @@ nodeQueensChild();
 
 function nodeQueensChild() {
     var nqRes = nQueens(nQ_num, [nQ_pos]);
-    if (nQ_num % 2 !== 1 || Math.floor(nQ_num / 2) !== nQ_posy) nqRes *= 2; // for rows with symmetry, we multiple solutions by 2
+    if (nQ_num % 2 === 0 || Math.floor(nQ_num / 2) !== nQ_posy) nqRes *= 2; // for rows with symmetry, we multiple solutions by 2
     process.stdout.write(JSON.stringify(nqRes));
 }
 
